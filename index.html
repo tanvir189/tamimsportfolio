@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MD. Tamim | Medishark Portfolio</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at top left, #0d1117, #161b22 80%);
+    color: #f0f6fc;
+    overflow-x: hidden;
+}
+
+/* === HEADER === */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(13,17,23,0.7);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #30363d;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+header.scrolled {
+    background: rgba(13,17,23,0.95);
+    border-bottom-color: #ff7b00;
+}
+header h1 {
+    color: #ff1801;
+    font-weight: 700;
+    letter-spacing: 1px;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+@keyframes glow {
+    from { text-shadow: 0 0 5px #ff1801, 0 0 10px #ff1801; }
+    to { text-shadow: 0 0 15px #ff7b00, 0 0 30px #ff7b00; }
+}
+nav a {
+    margin-left: 25px;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s;
+}
+nav a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #ff7b00;
+    bottom: -5px;
+    left: 0;
+    transition: 0.3s;
+}
+nav a:hover {
+    color: #ff7b00;
+}
+nav a:hover::after {
+    width: 100%;
+}
+
+/* === HERO === */
+.hero {
+    height: 120vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #0d1117, #161b22);
+    background-size: 200% 200%;
+    animation: bgShift 10s ease infinite alternate;
+}
+@keyframes bgShift {
+    from { background-position: left top; }
+    to { background-position: right bottom; }
+}
+.hero h2 {
+    font-size: 2.8em;
+    color: #ff7b00;
+    animation: fadeDown 1s ease forwards;
+}
+.hero h3 {
+    font-size: 1.3em;
+    color: #8b949e;
+    margin-top: 10px;
+    opacity: 0;
+    animation: fadeUp 1.5s ease forwards 0.5s;
+}
+.hero p {
+    margin-top: 15px;
+    color: #c9d1d9;
+    opacity: 0;
+    animation: fadeUp 1.5s ease forwards 0.8s;
+}
+.hero button {
+    background: #ff1801;
+    color: #fff;
+    border: none;
+    margin-top: 30px;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0 10px rgba(255,24,1,0.5);
+}
+.hero button:hover {
+    background: #ff7b00;
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(255,123,0,0.7);
+}
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* === SECTION COMMON === */
+section {
+    padding: 80px 10%;
+    animation: fadeIn 1s ease forwards;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* === ABOUT === */
+.about {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+.about img {
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    border: 4px solid #ff7b00;
+    object-fit: cover;
+    box-shadow: 0 0 20px rgba(255,123,0,0.4);
+    transition: 0.5s;
+}
+.about img:hover {
+    transform: scale(1.05) rotate(5deg);
+    box-shadow: 0 0 30px rgba(255,123,0,0.7);
+}
+.about-text {
+    max-width: 600px;
+    animation: fadeIn 1.2s ease forwards;
+}
+.about-text h2 {
+    color: #ff7b00;
+    margin-bottom: 10px;
+}
+.about-text p {
+    color: #c9d1d9;
+    line-height: 1.7;
+}
+
+/* === PROJECTS === */
+.projects {
+    text-align: center;
+}
+.projects h2 {
+    color: #ff7b00;
+    margin-bottom: 30px;
+}
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+.card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 15px;
+    padding: 25px;
+    transition: 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+.card::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,123,0,0.15), transparent 60%);
+    transform: rotate(45deg);
+    transition: opacity 0.4s;
+    opacity: 0;
+}
+.card:hover::before {
+    opacity: 1;
+}
+.card:hover {
+    transform: translateY(-8px);
+    border-color: #ff7b00;
+}
+.card h3 {
+    color: #58a6ff;
+    margin-bottom: 10px;
+}
+.card p {
+    color: #c9d1d9;
+}
+
+/* === SKILLS === */
+.skills {
+    text-align: center;
+}
+.skills h2 {
+    color: #ff7b00;
+    margin-bottom: 25px;
+}
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+.skill {
+    background: #1b222a;
+    border: 1px solid #30363d;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: 500;
+    transition: 0.4s ease;
+    cursor: default;
+}
+.skill:hover {
+    background: #ff7b00;
+    color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255,123,0,0.6);
+}
+
+/* === CONTACT === */
+.contact {
+    text-align: center;
+}
+.contact h2 {
+    color: #ff7b00;
+    margin-bottom: 15px;
+}
+.contact p {
+    color: #c9d1d9;
+    margin-bottom: 25px;
+}
+.contact a {
+    background: #58a6ff;
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: 0.3s;
+    box-shadow: 0 0 10px rgba(88,166,255,0.5);
+}
+.contact a:hover {
+    background: #ff7b00;
+    box-shadow: 0 0 25px rgba(255,123,0,0.6);
+}
+
+/* === FOOTER === */
+footer {
+    text-align: center;
+    padding: 25px;
+    border-top: 1px solid #30363d;
+    color: #8b949e;
+    font-size: 0.9em;
+}
+
+/* === PARTICLES === */
+canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+a{
+    text-decoration: none;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="bgParticles"></canvas>
+
+<header>
+    <h1>MD. Tamim</h1>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h2>Assalamu Alaikum, I'm Tamim 👋</h2>
+    <h3>Medical Student | Educator | Mentor of Medishark</h3>
+    <p>From Sher-E-Bangla Medical College, Barishal (54th Batch)</p>
+    <button onclick="document.querySelector('#projects').scrollIntoView({behavior:'smooth'})">View My Work</button>
+</section>
+
+<section id="about" class="about">
+    <img src="https://i.postimg.cc/nL6Rhh0d/xc008q.jpg" alt="Tamim Avatar">
+    <div class="about-text">
+        <h2>About Me</h2>
+        <p>I'm <b>MD. Tamim</b> (friends call me <b>Tavim</b>), a medical student passionate about teaching and simplifying tough concepts.  
+        Currently launching a course on <b>Respiratory Physiology</b> under <b>Medishark</b>.  
+        I love exploring <b>Clinical Biochemistry</b>, <b>Endocrinology</b>, and <b>Biophysics</b>.</p>
+        <p>Outside medicine, I’m a foodie — <b>Kacchi Biryani</b> and <b>Sausage Carnival Pizza</b> are unbeatable 🍛🔥.  
+        And yes — F1 is my adrenaline therapy. 🏎️ Red Bull dominance continues!</p>
+    </div>
+</section>
+
+<section id="projects" class="projects">
+    <h2>My Projects</h2>
+    <div class="project-grid">
+        <div class="card">
+            <h3>Medishark</h3>
+            <p>A digital learning platform I founded to simplify complex medical concepts through interactive video lectures and animated lessons.</p>
+        </div>
+        <div class="card">
+            <h3>Respiratory Physiology Course</h3>
+            <p>An in-depth course on respiratory mechanics, gas exchange, and neural control of breathing — clear, visual, and engaging.</p>
+        </div>
+        <div class="card">
+            <h3>Anatomy course</h3>
+            <p>I also have anatomy course where I teach anatomy from very basic by 3d visualization</p>
+        </div>
+    </div>
+</section>
+
+<section id="skills" class="skills">
+    <h2>Skills & Interests</h2>
+    <div class="skill-list">
+        <div class="skill">Medical Physiology</div>
+        <div class="skill">Biochemistry</div>
+        <div class="skill">Endocrinology</div>
+        <div class="skill">Clinical Reasoning</div>
+        <div class="skill">Science Communication</div>
+        <div class="skill">Web Design (HTML/CSS)</div>
+        <div class="skill">Video Editing</div>
+        <div class="skill">F1 Analysis</div>
+        <div class="skill">Creative Writing</div>
+    </div>
+</section>
+
+<section id="contact" class="contact">
+    <h2>Contact Me</h2>
+    <p>Want to collaborate, learn, or just chat about physiology or F1?</p>
+    <a href="mailto:tamimtanvir10@gmail.com">Email Me</a>
+</section>
+
+<footer>
+    <p>© 2025 MD. Tamim | Built with 💻, ☕, and endless curiosity.</p>
+</footer>
+
+<script>
+// Scroll header effect
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    if (window.scrollY > 50) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+});
+
+// Simple particle background
+const canvas = document.getElementById('bgParticles');
+const ctx = canvas.getContext('2d');
+let particles = [];
+function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resize);
+resize();
+for (let i = 0; i < 80; i++) {
+    particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2,
+        dx: (Math.random() - 0.5) * 0.7,
+        dy: (Math.random() - 0.5) * 0.7
+    });
+}
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255,123,0,0.4)';
+        ctx.fill();
+        p.x += p.dx;
+        p.y += p.dy;
+        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+    });
+    requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>
